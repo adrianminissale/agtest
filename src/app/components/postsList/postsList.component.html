@@ -1,3 +1,5 @@
+<app-search></app-search>
+
 <ng-container *ngIf="loading; else showPosts">
   ... app-loading ...
 </ng-container>
@@ -6,6 +8,8 @@
   <ng-container *ngFor="let post of posts">
     <div>{{ post.id }} : {{ post.title }}</div>
   </ng-container>
-</ng-template>
 
-<app-pagination></app-pagination>
+  <ng-container *ngIf="links">
+    <app-pagination></app-pagination>
+  </ng-container>
+</ng-template>

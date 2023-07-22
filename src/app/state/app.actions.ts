@@ -13,4 +13,9 @@ export namespace AppStateAction {
     static readonly type = '[App] Links';
     constructor(public payload: {}) {}
   }
+
+  export class Search {
+    static readonly type = '[App] Search';
+    constructor(public payload: string) {}
+  }
 }

@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppState } from 'src/app/state';
 
+import { SearchComponent } from './components/search/search.component';
 import { PostsListComponent } from './components/postsList/postsList.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SearchComponent,
     PostsListComponent,
     PaginationComponent,
   ],

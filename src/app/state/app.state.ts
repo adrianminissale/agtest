@@ -10,6 +10,7 @@ import { AppStateModel } from './app.model';
     pagination: 1,
     posts: [],
     links: {},
+    search: ''
   },
 })
 @Injectable()
@@ -41,6 +42,15 @@ export class AppState {
     });
   }
 
+  @Action(AppStateAction.Search)
+  AppStateSearch(ctx: StateContext<AppStateModel>, actions: AppStateAction.Search) {
+    const state = ctx.getState();
+    ctx.setState({
+      ...state,
+      search: actions.payload,
+    });
+  }
+
   @Selector()
   static Pagination(state: AppStateModel) {
     return state.pagination;
@@ -54,5 +64,10 @@ export class AppState {
   @Selector()
   static Links(state: AppStateModel) {
     return state.links;
+  }
+
+  @Selector()
+  static Search(state: AppStateModel) {
+    return state.search;
   }
 }

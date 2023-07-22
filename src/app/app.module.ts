@@ -13,6 +13,7 @@ import { AppState } from 'src/app/state';
 import { SearchComponent } from './components/search/search.component';
 import { PostsListComponent } from './components/postsList/postsList.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     SearchComponent,
     PostsListComponent,
     PaginationComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,

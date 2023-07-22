@@ -6,7 +6,9 @@
 
 <ng-template #showPosts>
   <ng-container *ngFor="let post of posts">
-    <div>{{ post.id }} : {{ post.title }}</div>
+    <div>
+      {{ post.id }} : {{ post.title }} <a [routerLink]="['/', post.id]">View</a>
+    </div>
   </ng-container>
 
   <ng-container *ngIf="links">

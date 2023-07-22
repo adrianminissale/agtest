@@ -1,0 +1,8 @@
+<ng-container *ngIf="loading; else showPost">
+  ... app-loading ...
+</ng-container>
+
+<ng-template #showPost>
+  <div>{{ post.id }} : {{ post.title }}</div>
+  <div>{{ post.body }}</div>
+</ng-template>

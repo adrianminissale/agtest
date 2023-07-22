@@ -15,6 +15,7 @@ import { SearchComponent } from './components/search/search.component';
 import { PostsListComponent } from './components/postsList/postsList.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { PostComponent } from './components/post/post.component';
+import { EditPostComponent } from './components/editPost/editPost.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
     PostComponent,
     DeletePostComponent,
     TopbarComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,

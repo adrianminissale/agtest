@@ -21,6 +21,7 @@ const DELETE_POST = gql`
 export class DeletePostComponent implements OnInit, OnDestroy {
   deleted: boolean = false;
   updatedPosts: any = [];
+  ID: string = this.router.url.split('/')[1] || '';
 
   private updatedPosts$ = this.store.select(AppState.UpdatedPosts);
   private querySubscription!: Subscription;
@@ -36,21 +37,21 @@ export class DeletePostComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const ID = this.router.url.split('/')[1] || '';
-
     this.querySubscription = this.apollo
       .mutate({
         mutation: DELETE_POST,
         variables: {
-          id: ID,
+          id: this.ID,
         },
       })
       .subscribe(
         ({ data }: any) => {
           this.deleted = data.deletePost;
           const post: any = {
-            id: ID,
+            id: this.ID,
             deleted: data.deletePost,
+            title: '',
+            body: '',
           };
           this.store.dispatch(new AppStateAction.UpdatedPosts(post));
         },

@@ -21,6 +21,7 @@ const GET_POST = (ID: string) => gql`
 export class PostComponent implements OnInit, OnDestroy {
   loading: boolean = true;
   post: any = {};
+  ID: string = this.router.url.split('/').pop() || '';
 
   private querySubscription!: Subscription;
 
@@ -30,11 +31,9 @@ export class PostComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    const ID = this.router.url.split('/').pop() || '';
-
     this.querySubscription = this.apollo
       .watchQuery<any>({
-        query: GET_POST(ID)
+        query: GET_POST(this.ID)
       })
       .valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;

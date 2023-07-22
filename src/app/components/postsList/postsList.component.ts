@@ -73,7 +73,7 @@ export class PostsListComponent implements OnInit, OnDestroy {
   }
 
   filterPosts = (posts: [{id: string}]) => {
-    return posts.filter(post => this.updatedPosts[ post.id ]?.deleted !== true);
+    return posts.map(post => this.updatedPosts[ post.id ]?.id === post.id ? this.updatedPosts[ post.id ] : post ).filter(post => this.updatedPosts[ post.id ]?.deleted !== true);
   }
 
   requestPosts(page: number = 1, search: string = '') {

@@ -1,0 +1,11 @@
+<ng-container *ngIf="loading; else showPost">
+  ... app-loading ...
+</ng-container>
+
+<ng-template #showPost>
+  <div><input type="text" value="{{ post.title }}" #title /></div>
+  <div>
+    <textarea #body>{{ post.body }}</textarea>
+  </div>
+  <span (click)="onSave(title.value, body.value)"> Save </span>
+</ng-template>

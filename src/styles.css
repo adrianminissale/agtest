@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --mp: 20px;
+  --sp: 10px;
+  --xsp: 5px;
+  --bgcolor: #ccc;
+  --display: block;
+  --dinline: inline;
+  --fsize: 14px;
+  --black: #000;
+}

@@ -35,6 +35,7 @@ const UPDATE_POST = gql`
 export class EditPostComponent implements OnInit, OnDestroy {
   @ViewChild('title') title: any;
   @ViewChild('body') body: any;
+  saved: boolean = false;
   loading: boolean = true;
   post: any = {};
   ID: string = this.router.url.split('/')[1] || '';
@@ -60,7 +61,8 @@ export class EditPostComponent implements OnInit, OnDestroy {
         },
       })
       .subscribe(
-        ({ data }: any) => {
+        () => {
+          this.saved = true;
           const post: any = {
             id: this.ID,
             deleted: false,

@@ -5,6 +5,7 @@ import { AppStateAction } from 'src/app/state';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
 })
 
 export class SearchComponent {

@@ -3,9 +3,14 @@
 </ng-container>
 
 <ng-template #showPost>
-  <div><input type="text" value="{{ post.title }}" #title /></div>
-  <div>
-    <textarea #body>{{ post.body }}</textarea>
-  </div>
-  <span (click)="onSave(title.value, body.value)"> Save </span>
+  <ng-container *ngIf="!saved; else savedPost">
+    <div><input type="text" value="{{ post.title }}" #title /></div>
+    <div>
+      <textarea #body>{{ post.body }}</textarea>
+    </div>
+    <span (click)="onSave(title.value, body.value)"> Save </span>
+  </ng-container>
+  <ng-template #savedPost>
+    SUCCESS!
+  </ng-template>
 </ng-template>

@@ -10,10 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppState } from 'src/app/state';
 
+import { DeletePostComponent } from './components/deletePost/deletePost.component';
 import { SearchComponent } from './components/search/search.component';
 import { PostsListComponent } from './components/postsList/postsList.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { PostComponent } from './components/post/post.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { PostComponent } from './components/post/post.component';
     PostsListComponent,
     PaginationComponent,
     PostComponent,
+    DeletePostComponent,
+    TopbarComponent,
   ],
   imports: [
     BrowserModule,

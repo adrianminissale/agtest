@@ -7,7 +7,14 @@
 <ng-template #showPosts>
   <ng-container *ngFor="let post of posts">
     <div>
-      {{ post.id }} : {{ post.title }} <a [routerLink]="['/', post.id]">View</a>
+      {{ post.id }} : {{ post.title }}
+      <a [routerLink]="['/', post.id]">
+        View
+      </a> | <a [routerLink]="['/', post.id, 'edit']">
+        Edit
+      </a> | <a [routerLink]="['/', post.id, 'delete']">
+        Delete
+      </a>
     </div>
   </ng-container>
 

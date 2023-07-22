@@ -40,6 +40,7 @@ export class PostsListComponent implements OnInit, OnDestroy {
   loading: boolean = true;
   posts: any[] = [];
   links: {} = {};
+  updatedPosts: any = {};
   search: string = '';
   limit: number = 25;
   pagination: number = 1;
@@ -47,6 +48,7 @@ export class PostsListComponent implements OnInit, OnDestroy {
   private pagination$ = this.store.select(AppState.Pagination);
   private search$ = this.store.select(AppState.Search);
   private links$ = this.store.select(AppState.Links);
+  private updatedPosts$ = this.store.select(AppState.UpdatedPosts);
   private querySubscription!: Subscription;
 
   constructor(
@@ -65,6 +67,13 @@ export class PostsListComponent implements OnInit, OnDestroy {
     this.links$.subscribe((value) => {
       this.links = value;
     });
+    this.updatedPosts$.subscribe((value) => {
+      this.updatedPosts = value;
+    });
+  }
+
+  filterPosts = (posts: [{id: string}]) => {
+    return posts.filter(post => this.updatedPosts[ post.id ]?.deleted !== true);
   }
 
   requestPosts(page: number = 1, search: string = '') {
@@ -85,7 +94,7 @@ export class PostsListComponent implements OnInit, OnDestroy {
       })
       .valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;
-        this.posts = data.posts.data;
+        this.posts = this.filterPosts(data.posts.data);
         this.store.dispatch(new AppStateAction.Posts(data.posts.data));
         this.store.dispatch(new AppStateAction.Links(data.posts.links));
       });

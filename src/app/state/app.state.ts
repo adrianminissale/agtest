@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { State, Action, Selector, StateContext } from '@ngxs/store';
+import { patch, append } from '@ngxs/store/operators';
 
 import { AppStateAction } from './app.actions';
 import { AppStateModel } from './app.model';
@@ -9,6 +10,7 @@ import { AppStateModel } from './app.model';
   defaults: {
     pagination: 1,
     posts: [],
+    updatedPosts: {},
     links: {},
     search: ''
   },
@@ -30,6 +32,15 @@ export class AppState {
     ctx.setState({
       ...state,
       posts: actions.payload,
+    });
+  }
+
+  @Action(AppStateAction.UpdatedPosts)
+  AppStateUpdatedPosts(ctx: StateContext<AppStateModel>, actions: AppStateAction.UpdatedPosts) {
+    const state = ctx.getState();
+    ctx.setState({
+      ...state,
+      updatedPosts: { ...state.updatedPosts, [actions.payload.id]: actions.payload }
     });
   }
 
@@ -59,6 +70,11 @@ export class AppState {
   @Selector()
   static Posts(state: AppStateModel) {
     return state.posts;
+  }
+
+  @Selector()
+  static UpdatedPosts(state: AppStateModel) {
+    return state.updatedPosts;
   }
 
   @Selector()

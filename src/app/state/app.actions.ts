@@ -9,6 +9,11 @@ export namespace AppStateAction {
     constructor(public payload: []) {}
   }
 
+  export class UpdatedPosts {
+    static readonly type = '[App] Updated Posts';
+    constructor(public payload: {id: number}) {}
+  }
+
   export class Links {
     static readonly type = '[App] Links';
     constructor(public payload: {}) {}

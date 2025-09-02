@@ -1,0 +1,16 @@
+:host {
+  .actions {
+    font-size: var(--fsize);
+    border-right: 2px solid var(--black);
+    border-left: 2px solid var(--black);
+    padding: 0 var(--xsp);
+    margin-left: var(--xsp);
+    a {
+      text-decoration: none;
+      color: var(--black);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<app-search></app-search>
+
+<ng-container *ngIf="loading; else showPosts">
+  ... app-loading ...
+</ng-container>
+
+<ng-template #showPosts>
+  <ng-container *ngFor="let post of posts">
+    <div>
+      {{ post.id }} : {{ post.title }}
+      <span class="actions">
+        <a [routerLink]="['/', post.id]">
+          View
+        </a> | <a [routerLink]="['/', post.id, 'edit']">
+          Edit
+        </a> | <a [routerLink]="['/', post.id, 'delete']">
+          Delete
+        </a>
+      </span>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="links">
+    <app-pagination></app-pagination>
+  </ng-container>
+</ng-template>
